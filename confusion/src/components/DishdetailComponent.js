@@ -32,7 +32,7 @@ class Dishdetail extends Component {
                     return(
                         <ul class="list-unstyled">
                             <li>{comment.comment}</li>
-                            <li>--{comment.author} {comment.date}</li>
+                            <li>--{comment.author} {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}</li>
                         </ul>
                     );
                 });
@@ -62,11 +62,13 @@ class Dishdetail extends Component {
 
     render(){
         return(
-        <div className="row">
+        <div className="container">
+            <div className="row">
             
-                {this.renderDish(this.props.selectedDish)}
+                {this.renderDish(this.props.dish)}
             
-                {this.renderCommentsDish(this.props.selectedDish)}
+                {this.renderCommentsDish(this.props.dish)}
+            </div>
         </div>
         );
         
