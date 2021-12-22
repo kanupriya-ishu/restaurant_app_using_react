@@ -6,9 +6,31 @@ function About(props) {
 
     const leaders = props.leaders.map((leader) => {
         return (
-            <p>Leader {leader.name}</p>
+            <div>
+                <RenderLeader leader={leader}/>
+            </div>
         );
     });
+
+    function RenderLeader({leader}){
+        return(
+            <div>
+                <Media tag="li">
+                  <Media left middle>
+                      <Media object src={leader.image} alt={leader.name} />
+                  </Media>
+                  <Media body className="ml-5">
+                    <Media heading>{leader.name}</Media>
+                    <Media body>
+                        <p>{leader.designation}</p>
+                        <p>{leader.description}</p>
+                    </Media>
+                  </Media>
+                </Media>
+            </div>
+            
+        );
+    }
 
     return(
         <div className="container">
